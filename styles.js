@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
+      // width: Dimensions.get('window').width,
+      // height: Dimensions.get('window').height,
     },
     textInput: {
       margin: 10,

@@ -1,10 +1,10 @@
 import React from 'react';
-import {TextInput, ImageBackground, TouchableOpacity, Text, View } from 'react-native';
+import {TextInput, ActivityIndicator, TouchableOpacity, Text, View } from 'react-native';
 import {styles} from './styles.js';
 import firebase from 'react-native-firebase';
 
 export class SignUpScreen extends React.Component {
-    state = {email: '', password: '', errorMessage: null}
+    state = {email: '', password: '', errorMessage: null, isLoading: false}
     static navigationOptions = {
         title: 'Register',
     }
@@ -30,16 +30,16 @@ export class SignUpScreen extends React.Component {
                 onChangeText={password => this.setState({password})}
                 value={this.state.password}/>
             <TouchableOpacity style={styles.signUpButton} onPress={this.handleRegister}>
-              <Text style={styles.buttonText}>Register</Text>
+              {this.state.isLoading? <ActivityIndicator/> : <Text style={styles.buttonText}>Register</Text>}
             </TouchableOpacity>
         </View>
       );
     }
     handleRegister = () => {
-        this.setState({errorMessage: null});
+        this.setState({errorMessage: null, isLoading: true});
         firebase.auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(()=> this.props.navigation.navigate('MainContent'))
-        .catch((error) => this.setState({errorMessage: error.message}))
+        .catch((error) => this.setState({errorMessage: error.message, isLoading: false}))
     }
   }

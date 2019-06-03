@@ -1,11 +1,11 @@
 import React from 'react';
-import {TextInput, ImageBackground, TouchableOpacity, Text, View } from 'react-native';
+import {TextInput, ImageBackground, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import {styles} from './styles.js';
 import firebase from 'react-native-firebase';
 
 export class LoginScreen extends React.Component {
-    state = {email: '', password: '', errorMessage: null}
+    state = {email: '', password: '', errorMessage: null, isLoading:false}
     static navigationOptions = {
         title: 'Log In',
     }
@@ -31,15 +31,16 @@ export class LoginScreen extends React.Component {
               onChangeText={password=>this.setState({password})}
               value={this.state.password}/>
             <TouchableOpacity style={styles.button} onPress={this.handleLogIn}>
-              <Text style={styles.buttonText}>Log In</Text>
+              {this.state.isLoading? <ActivityIndicator/> : <Text style={styles.buttonText}>Log In</Text>}
             </TouchableOpacity>
             <TouchableOpacity style={styles.textButton} onPress={() => this.props.navigation.navigate('SignUp')}>
-              <Text>Register</Text>
+              <Text style={{fontWeight:'bold', color:'#FFFFFF'}}>Register</Text>
             </TouchableOpacity>
         </ImageBackground>
       );
     }
     handleLogIn = () => {
+      this.setState({errorMessage: null, isLoading: true})
       firebase.auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(()=>{
@@ -50,6 +51,8 @@ export class LoginScreen extends React.Component {
             });
           this.props.navigation.dispatch(resetAction);
         })
-        .catch(error=>{this.setState({errorMessage: error.message})})
+        .catch(error=>{
+          this.setState({errorMessage: error.message, isLoading: false})
+        })
     }
   }
