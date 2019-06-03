@@ -11,11 +11,74 @@ PODS:
   - EXPermissions (4.0.0):
     - UMCore
     - UMPermissionsInterface
+  - Firebase/Core (5.20.2):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.8.1)
+  - Firebase/CoreOnly (5.20.2):
+    - FirebaseCore (= 5.4.1)
+  - Firebase/Messaging (5.20.2):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.5.0)
+  - FirebaseAnalytics (5.8.1):
+    - FirebaseCore (~> 5.4)
+    - FirebaseInstanceID (~> 3.8)
+    - GoogleAppMeasurement (= 5.8.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.2.0)
+  - FirebaseCore (5.4.1):
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.8.1):
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseMessaging (3.5.0):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.2)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/Reachability (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+    - Protobuf (~> 3.1)
   - Folly (2018.10.22.00):
     - boost-for-react-native
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - GoogleAppMeasurement (5.8.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.8.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.8.0)
+  - GoogleUtilities/Logger (5.8.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.8.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.8.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.8.0)"
+  - GoogleUtilities/Reachability (5.8.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.8.0):
+    - GoogleUtilities/Logger
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - Protobuf (3.8.0)
   - React (0.58.6):
     - React/Core (= 0.58.6)
   - React/Core (0.58.6):
@@ -82,6 +145,8 @@ DEPENDENCIES:
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
+  - Firebase/Core (~> 5.20.1)
+  - Firebase/Messaging (~> 5.20.1)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - React/Core (from `../node_modules/react-native`)
@@ -111,6 +176,16 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - nanopb
+    - Protobuf
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -177,28 +252,38 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
-  EXAppLoaderProvider: d1bf4e6cd3a121c208f8748e310ca2479d2c521d
-  EXConstants: 9fef2c937fa0c8e6182b26cfea29e9a27fbb3009
-  EXFileSystem: fc5260fcc461ad675ea1bb56a1d5be4c56e2b556
-  EXPermissions: 615f9e58b861a3a82bbf9784483c2fb34e75c751
+  EXAppLoaderProvider: a5b88a7e02f92807ad3cd962bb3e0632d71cc5dc
+  EXConstants: a338ed187829ab25b8817f84cd84eecc13e64fd4
+  EXFileSystem: 18c9980f52e3bd6a28670c17e0d33a9c1584a336
+  EXPermissions: ce3e170052df9d496aa51e1c372080cb2508fb16
+  Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
+  FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
+  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
+  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
+  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
+  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
+  GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
+  GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   React: 130b87b2d5e2baac646954282cab87be986d98fc
   RNGestureHandler: 0e0813f9370d00efc5dd7a7f19f579260d0244c2
-  UMBarCodeScannerInterface: e5c8c1a9b1a3724169601da09ece11ba742fe574
-  UMCameraInterface: fab8201fb49679a4951dbee4bc9de43c4771207f
-  UMConstantsInterface: 661f05e74c4de53030b25e6a64e5e116eecf4bef
-  UMCore: b6639c3ac799f5021eed0dfadbdcda1b8b77553d
-  UMFaceDetectorInterface: 62dd9a54404ffe7de4bde798d34f7b3bf76b8cfa
-  UMFileSystemInterface: 49b65f732e7f5bf7fd08b1a064f153b11b2358de
-  UMFontInterface: 6b8f8dabb93044c90902144abdc7779848185c1f
-  UMImageLoaderInterface: 832d1a71f395a7b9288e8c5bb65c0a4377a41f1e
-  UMPermissionsInterface: 50a84c830ca47b26e21e51a2ce051e1b64807b44
-  UMReactNativeAdapter: 5bc978933c5cb906a31a8e90e5d1f37b9a71f5fb
-  UMSensorsInterface: 4c21e6a34f142933b480c7fa5c8a03195a713b37
-  UMTaskManagerInterface: 4640d2fed78f46943d2e7fc37318b9749a0f8106
+  UMBarCodeScannerInterface: 53fd3cbf24fe5c58f3ba82ac8c27f0373fbf52fa
+  UMCameraInterface: d5a2727e76d6b47e3201f863102c055ddbcc6206
+  UMConstantsInterface: 800fb8f95fca9bb2c18ae554e4cb4df4383f6cbf
+  UMCore: c3266dbcd7530f90c63e99a22ee088f3cc323cf9
+  UMFaceDetectorInterface: 0a3116d1313f0a4ea5e8187dbaac8ebe23708135
+  UMFileSystemInterface: a726855fa018f4e76141bb0eab3c576d904286b2
+  UMFontInterface: d43144a9fd2139935623d03b5b617f2d37c4069a
+  UMImageLoaderInterface: c1c22fde92be958166ae6c133d7937a5fd1d8ef8
+  UMPermissionsInterface: 3c47ca68fbcd43286292d678fcb08a62f0189af0
+  UMReactNativeAdapter: d1ca37ccecbfa95306adeebfa5e1d5514bf3d479
+  UMSensorsInterface: 136a828e73e4d69694cdd8d6203a99d38471b90e
+  UMTaskManagerInterface: f88793bd35248182e15591e0aa5b045132312be0
   yoga: 32d7ef1081951e9a35a4c72a7be797598b138a48
 
-PODFILE CHECKSUM: 30069ca39522230e3b438bc10aa6b62e31c77d4e
+PODFILE CHECKSUM: b3d845420c0742574320670681d0e5013d155996
 
 COCOAPODS: 1.7.1

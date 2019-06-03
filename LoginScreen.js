@@ -11,10 +11,13 @@ export class LoginScreen extends React.Component {
         const {navigate} = this.props.navigation;
       return (
         <ImageBackground style={styles.mainContainer} source={require('./assets/Plumbing.jpg')}>
-            <TextInput style={styles.textInput} placeholder="Username"></TextInput>
+            <TextInput style={styles.textInput} placeholder="Email"></TextInput>
             <TextInput style={styles.textInput} placeholder="Password"/>
             <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('MainContent')}>
               <Text style={styles.buttonText}>Log In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.textButton} onPress={() => this.props.navigation.navigate('SignUp')}>
+              <Text>Register</Text>
             </TouchableOpacity>
         </ImageBackground>
       );
