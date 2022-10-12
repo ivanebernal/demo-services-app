@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "react": "16.6.3",
-    "react-native": "0.58.6",
+    "react-native": "0.70.2",
     "react-native-firebase": "^5.4.2",
     "react-native-gesture-handler": "^1.2.2",
     "react-native-unimodules": "0.3.1",
